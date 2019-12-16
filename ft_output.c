@@ -12,7 +12,7 @@
 
 #include "libftprintf.h"
 
-int		ft_o_num(t_format *f, char *data, char lf)
+static int	ft_o_num(t_format *f, char *data, char lf)
 {
 	size_t	count;
 
@@ -28,7 +28,7 @@ int		ft_o_num(t_format *f, char *data, char lf)
 	return (count);
 }
 
-int		ft_o_string(t_format *f, char *data, char lf)
+static int	ft_o_string(t_format *f, char *data, char lf)
 {
 	size_t	count;
 
@@ -42,7 +42,7 @@ int		ft_o_string(t_format *f, char *data, char lf)
 	return (count);
 }
 
-int		ft_o_char(t_format *f, char *data)
+static int	ft_o_char(t_format *f, char *data)
 {
 	size_t	count;
 
@@ -57,7 +57,7 @@ int		ft_o_char(t_format *f, char *data)
 	return (count);
 }
 
-int		ft_o_hex(t_format *f, char *data, char lf)
+static int	ft_o_hex(t_format *f, char *data, char lf)
 {
 	size_t	count;
 
@@ -71,7 +71,7 @@ int		ft_o_hex(t_format *f, char *data, char lf)
 	return (count);
 }
 
-int		ft_output(char *flgs, va_list *l)
+int			ft_output(char *flgs, va_list *l)
 {
 	size_t		count;
 	t_format	*f;

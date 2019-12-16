@@ -46,3 +46,6 @@ fclean: clean
 	@rm -rf $(NAME) *.a
 
 re: fclean all
+
+norm: fclean
+	@norminette -R CheckForbiddenSourceHeader *.c *.h
