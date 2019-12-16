@@ -6,13 +6,13 @@
 /*   By: ehakam <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/15 21:08:45 by ehakam            #+#    #+#             */
-/*   Updated: 2019/12/15 21:09:06 by ehakam           ###   ########.fr       */
+/*   Updated: 2019/12/16 15:21:32 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void			ft_data_zero(char **d, int prec)
+static void		ft_data_zero(char **d, int prec)
 {
 	if (*d && !ft_strncmp(*d, "0", 3) && prec == 0)
 	{

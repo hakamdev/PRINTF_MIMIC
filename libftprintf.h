@@ -6,7 +6,7 @@
 /*   By: ehakam <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/16 21:49:16 by ehakam            #+#    #+#             */
-/*   Updated: 2019/11/16 22:43:05 by ehakam           ###   ########.fr       */
+/*   Updated: 2019/12/16 15:20:52 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ char			*ft_itoa(long long n);
 char			*ft_strdup(const char *s);
 void			ft_spacing(t_format **fmt, char *data, char f);
 void			*ft_data(char flg, va_list *l, int prec);
-void			ft_data_zero(char **d, int prec);
 void			*ft_memcpy(void *dest, const void *src, size_t n);
 t_format		*ft_format(char **f, va_list *l);
 long long		ft_atoi(const char *str);

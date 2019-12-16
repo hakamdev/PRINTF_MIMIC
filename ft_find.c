@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_flags.c                                         :+:      :+:    :+:   */
+/*   ft_find.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehakam <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/15 21:10:04 by ehakam            #+#    #+#             */
-/*   Updated: 2019/12/15 21:10:16 by ehakam           ###   ########.fr       */
+/*   Created: 2019/12/16 15:25:22 by ehakam            #+#    #+#             */
+/*   Updated: 2019/12/16 15:25:41 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
-
-char	*ft_flags(char *fmt)
+int		ft_find(const char *s, char c)
 {
-	char	*flgs;
+	int		i;
 
-	flgs = NULL;
-	while ((*fmt >= '0' && *fmt <= '9') ||
-	*fmt == '-' || *fmt == '.' || *fmt == '*')
-		flgs = ft_appendchar(flgs, *fmt++);
-	if (ft_find("%cspdiuxXD", *fmt))
+	if (s)
 	{
-		flgs = ft_appendchar(flgs, *fmt);
-		return (flgs);
+		i = 0;
+		while ((char)s[i])
+		{
+			if ((char)s[i] == c)
+				return (1);
+			i++;
+		}
 	}
-	else
-		free(flgs);
-	return (NULL);
+	return (0);
 }

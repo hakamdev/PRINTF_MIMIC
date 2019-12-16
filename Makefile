@@ -29,7 +29,8 @@ SRC=ft_printf.c \
 	ft_putstr.c \
 	ft_strdup.c \
 	ft_strlen.c \
-	ft_strncmp.c
+	ft_strncmp.c \
+	ft_find.c
 OBJ=$(SRC:.c=.o)
 
 all: $(NAME)
