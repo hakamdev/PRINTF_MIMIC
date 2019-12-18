@@ -6,7 +6,7 @@
 /*   By: ehakam <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/15 21:17:06 by ehakam            #+#    #+#             */
-/*   Updated: 2019/12/15 21:17:09 by ehakam           ###   ########.fr       */
+/*   Updated: 2019/12/17 21:01:21 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,7 @@ void	ft_spacing_string(t_format **fmt, size_t len)
 		mxzr = (*fmt)->minw - len;
 	if (mxzr < 0)
 		mxzr = 0;
-	if (!(*fmt)->zero || (*fmt)->mins)
-		mxsp = (*fmt)->minw - (mxzr ? mxzr : len);
+	mxsp = (*fmt)->minw - (mxzr + len);
 	(*fmt)->mxzr = mxzr >= 0 ? mxzr : 0;
 	(*fmt)->mxsp = mxsp >= 0 ? mxsp : 0;
 }
@@ -56,14 +55,13 @@ void	ft_spacing_hex(t_format **fmt, size_t len)
 
 	mxzr = 0;
 	mxsp = 0;
-	if ((*fmt)->zero && (*fmt)->prec < 0)
+	if ((*fmt)->zero && !(*fmt)->mins && (*fmt)->prec < 0)
 		mxzr = (*fmt)->minw - len;
 	else if ((*fmt)->prec >= 0)
 		mxzr = (*fmt)->prec - len;
 	if (mxzr < 0)
 		mxzr = 0;
-	if (!(*fmt)->zero || (*fmt)->prec >= 0)
-		mxsp = (*fmt)->minw - (mxzr + len);
+	mxsp = (*fmt)->minw - (mxzr + len);
 	(*fmt)->mxzr = mxzr >= 0 ? mxzr : 0;
 	(*fmt)->mxsp = mxsp >= 0 ? mxsp : 0;
 }
