@@ -21,8 +21,8 @@
 #  define CNULL '\0'
 # endif
 
-# ifndef INULL
-#  define INULL 0
+# ifndef MXINT
+#  define MXINT 2147483647
 # endif
 
 typedef struct	s_format
@@ -37,10 +37,10 @@ typedef struct	s_format
 
 int				ft_printf(const char *format, ...);
 int				ft_find(const char *s, char c);
-int				ft_output(char *flgs, va_list *l);
-int				ft_putchar(char c, int n);
-int				ft_putstr(char *s, int n, char lf);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
+long			ft_output(char *flgs, va_list *l);
+long			ft_putchar(char c, long n);
+long			ft_putstr(char *s, long n, char lf);
 char			*ft_itoh(size_t value, int flg);
 char			*ft_appendchar(char *str, char c);
 char			*ft_flags(char *fmt);

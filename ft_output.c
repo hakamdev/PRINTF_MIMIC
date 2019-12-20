@@ -12,9 +12,9 @@
 
 #include "libftprintf.h"
 
-static int	ft_o_num(t_format *f, char *data, char lf)
+static long	ft_o_num(t_format *f, char *data, char lf)
 {
-	size_t	count;
+	long	count;
 
 	count = 0;
 	if (!(f->mins))
@@ -28,9 +28,9 @@ static int	ft_o_num(t_format *f, char *data, char lf)
 	return (count);
 }
 
-static int	ft_o_string(t_format *f, char *data, char lf)
+static long	ft_o_string(t_format *f, char *data, char lf)
 {
-	size_t	count;
+	long	count;
 
 	count = 0;
 	if (!(f->mins))
@@ -42,9 +42,9 @@ static int	ft_o_string(t_format *f, char *data, char lf)
 	return (count);
 }
 
-static int	ft_o_char(t_format *f, char *data)
+static long	ft_o_char(t_format *f, char *data)
 {
-	size_t	count;
+	long	count;
 
 	count = 0;
 	if (!(f->mins))
@@ -57,9 +57,9 @@ static int	ft_o_char(t_format *f, char *data)
 	return (count);
 }
 
-static int	ft_o_hex(t_format *f, char *data, char lf)
+static long	ft_o_hex(t_format *f, char *data, char lf)
 {
-	size_t	count;
+	long	count;
 
 	count = 0;
 	if (!(f->mins))
@@ -71,17 +71,19 @@ static int	ft_o_hex(t_format *f, char *data, char lf)
 	return (count);
 }
 
-int			ft_output(char *flgs, va_list *l)
+long		ft_output(char *flgs, va_list *l)
 {
-	size_t		count;
+	long		count;
 	t_format	*f;
 	char		*data;
 	char		lf;
 
 	count = 0;
 	lf = flgs[ft_strlen(flgs) - 1];
-	f = ft_format(&flgs, l);
-	data = ft_data(lf, l, f->prec);
+	if (!(f = ft_format(&flgs, l)))
+		return (-1);
+	if (!(data = ft_data(lf, l, f->prec)))
+		return (-1);
 	ft_spacing(&f, data, lf);
 	if (ft_find("Ddiu", lf))
 		count += ft_o_num(f, data, lf);

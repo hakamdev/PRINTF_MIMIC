@@ -12,10 +12,10 @@
 
 #include "libftprintf.h"
 
-int		ft_putchar(char c, int n)
+long	ft_putchar(char c, long n)
 {
 	unsigned char	cc;
-	int				nn;
+	long			nn;
 
 	cc = (unsigned char)c;
 	nn = n;

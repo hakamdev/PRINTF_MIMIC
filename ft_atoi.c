@@ -26,7 +26,7 @@ long long	ft_atoi(const char *str)
 	while (s && *s > 0 && *s <= ' ')
 	{
 		if (*s == 27)
-			return (INULL);
+			return (0);
 		s++;
 	}
 	if (s && *s == '-')

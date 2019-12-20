@@ -12,10 +12,10 @@
 
 #include "libftprintf.h"
 
-int		ft_printf_body(char **fmt, va_list *list)
+static long	ft_printf_body(char **fmt, va_list *list)
 {
 	char	*flgs;
-	int		count;
+	long	count;
 
 	count = 0;
 	flgs = ft_flags(*fmt);
@@ -28,10 +28,10 @@ int		ft_printf_body(char **fmt, va_list *list)
 	return (count);
 }
 
-int		ft_printf(const char *format, ...)
+int			ft_printf(const char *format, ...)
 {
 	va_list	list;
-	int		count;
+	long	count;
 	char	*fmt;
 
 	if (format)
@@ -43,11 +43,12 @@ int		ft_printf(const char *format, ...)
 		if (*fmt == '%')
 		{
 			fmt++;
-			count += ft_printf_body(&fmt, &list);
+			if ((count += ft_printf_body(&fmt, &list)) == -1)
+				return (count);
 		}
 		else if (*fmt != CNULL)
 			count += ft_putchar(*fmt++, 1);
 	}
 	va_end(list);
-	return (count);
+	return (count > MXINT ? -1 : count);
 }
